@@ -1,4 +1,4 @@
-pyjwt==1.5.3
+pyjwt
 flask
 gunicorn
 pytest

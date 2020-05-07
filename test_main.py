@@ -1,6 +1,7 @@
 '''
 Tests for jwt flask app.
 '''
+!/bin/sh
 import os
 import json
 import pytest
