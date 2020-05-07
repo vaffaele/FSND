@@ -1,6 +1,8 @@
+#!/usr/local/bin/python3
 """
 A simple app to create a JWT token.
 """
+
 import os
 import logging
 import datetime
@@ -18,7 +20,6 @@ LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO')
 def _logger():
     '''
     Setup logger format, level, and handler.
-
     RETURNS: log object
     '''
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -111,4 +112,4 @@ def _get_jwt(user_data):
     return jwt.encode(payload, JWT_SECRET, algorithm='HS256')
 
 if __name__ == '__main__':
-    APP.run()
+    APP.run(port=8080, debug=True)

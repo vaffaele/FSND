@@ -1,0 +1,68 @@
+{
+    "pipeline": {
+        "name": "simple-jwt-api-test-CodePipelineGitHub-1B914788EL6I5",
+        "roleArn": "arn:aws:iam::724338803814:role/simple-jwt-api-test-CodePipelineServiceRole-UDQGCB3BQ9BG",
+        "artifactStore": {
+            "type": "S3",
+            "location": "simple-jwt-api-test-codepipelineartifactbucket-6t7dor16xir4"
+        },
+        "stages": [
+            {
+                "name": "Source",
+                "actions": [
+                    {
+                        "name": "App",
+                        "actionTypeId": {
+                            "category": "Source",
+                            "owner": "ThirdParty",
+                            "provider": "GitHub",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "Branch": "master",
+                            "OAuthToken": "699f0a98da095af8202dc365aa5f3fa07ea2313e",
+                            "Owner": "vaffaele",
+                            "Repo": "FSND"
+                        },
+                        "outputArtifacts": [
+                            {
+                                "name": "App"
+                            }
+                        ],
+                        "inputArtifacts": []
+                    }
+                ]
+            },
+            {
+                "name": "Build",
+                "actions": [
+                    {
+                        "name": "Build",
+                        "actionTypeId": {
+                            "category": "Build",
+                            "owner": "AWS",
+                            "provider": "CodeBuild",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "ProjectName": "simple-jwt-api-test"
+                        },
+                        "outputArtifacts": [
+                            {
+                                "name": "BuildOutput"
+                            }
+                        ],
+                        "inputArtifacts": [
+                            {
+                                "name": "App"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "version": 1
+    } 
+}
