@@ -2,4 +2,5 @@ pyjwt==1.5.3
 flask
 gunicorn
 pytest
+numpy
 typing
